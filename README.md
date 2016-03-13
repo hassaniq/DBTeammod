@@ -212,8 +212,12 @@ sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove && sud
 ```
 Then, you have to install a bot language like this:
 ```
-#install english_lang
-#lang en
+!install english_lang
+!lang en
+```
+```
+!install spanish_lang
+!lang es
 ```
 
 Enable more [`plugins`](https://github.com/yagop/Talibot/tree/supergroups/plugins)
