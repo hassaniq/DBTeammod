@@ -42,7 +42,8 @@ return {
   description = "Busca torrents.",
   usage = "!torrent <search term>: Search for torrent",
   patterns = {
-    "^!torrent (.+)$"
+    "^!torrent (.+)$",
+    "^/torrent (.+)$"
   },
   run = run
 }
