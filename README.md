@@ -1,7 +1,9 @@
 DBTeam-bot
 ============
 
-A Telegram Bot based on plugins using [tg](https://github.com/vysheng/tg).
+NOTA: ESTE ES SOLO UNA CONFIGURACION/MOD CON MAS PLUGINS YA INSTALADOS, EL CREADOR ES JOSEPDAL.
+NOTE: THIS IS ONLY A CONFUGURATION/MOD WITH MORE PLUGINS INSTALLED, THE CREATOR IS JOSEPDAL.
+[tg](https://github.com/vysheng/tg).
 
 Bot Commands
 ------------
