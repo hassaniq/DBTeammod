@@ -194,6 +194,7 @@ Bot Commands
 [Installation](https://github.com/yagop/telegram-bot/wiki/Installation)
 ------------
 ```bash
+#First
 sudo apt-get update
 ```
 
