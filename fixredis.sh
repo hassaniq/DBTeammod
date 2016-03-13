@@ -1,1 +1,1 @@
-sudo service redis-server start -b
+sudo service redis-server start
