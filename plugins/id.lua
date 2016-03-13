@@ -127,7 +127,7 @@ local function run(msg, matches)
             local chanId = matches[2]
             -- !ids? (chat) (%d+)
             if chanId then
-                local chan = ("%s!id%s"):format(type, chanId)
+                local chan = ("%s#id%s"):format(type, chanId)
                 if type == 'chat' then
                     chat_info(chan, returnids, {receiver=receiver})
                 else
@@ -135,7 +135,7 @@ local function run(msg, matches)
                 end
             else
                 -- !id chat/channel
-                local chan = ("%s!id%s"):format(msg.to.type, msg.to.id)
+                local chan = ("%s#id%s"):format(msg.to.type, msg.to.id)
                 if msg.to.type == 'channel' then
                     channel_get_users(chan, channelUserIDs, {receiver=receiver})
                 end
