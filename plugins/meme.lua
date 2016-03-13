@@ -178,19 +178,19 @@ end
 return {
    description = "Generate a meme image with up and bottom texts.",
    usage = {
-      "!meme search (name): Return the name of the meme that match.",
-      "!meme list: Return the link where you can see the memes.",
-      "!meme listall: Return the list of all memes. Only admin can call it.",
-      '!meme [name] - [text_up] - [text_down]: Generate a meme with the picture that match with that name with the texts provided.',
-      '!meme [name] "[text_up]" "[text_down]": Generate a meme with the picture that match with that name with the texts provided.',
+      "[!/#]meme search (name): Return the name of the meme that match.",
+      "[!/#]meme list: Return the link where you can see the memes.",
+      "[!/#]meme listall: Return the list of all memes. Only admin can call it.",
+      '[!/#]meme [name] - [text_up] - [text_down]: Generate a meme with the picture that match with that name with the texts provided.',
+      '[!/#]meme [name] "[text_up]" "[text_down]": Generate a meme with the picture that match with that name with the texts provided.',
    },
    patterns = {
-      "^!meme (search) (.+)$",
-      '^!meme (list)$',
-      '^!meme (listall)$',
-      '^!meme (.+) "(.*)" "(.*)"$',
-      '^!meme "(.+)" "(.*)" "(.*)"$',
-      "^!meme (.+) %- (.*) %- (.*)$"
+      "^[!/#]meme (search) (.+)$",
+      '^[!/#]meme (list)$',
+      '^[!/#]meme (listall)$',
+      '^[!/#]meme (.+) "(.*)" "(.*)"$',
+      '^[!/#]meme "(.+)" "(.*)" "(.*)"$',
+      "^[!/#]meme (.+) %- (.*) %- (.*)$"
    },
    run = run
 }

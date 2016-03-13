@@ -325,7 +325,7 @@ local function run(msg, matches)
 		 		local receiver = 'chat#id'..msg.to.id
 			    chat_info(receiver, members_chat, {chat_id=chat_id})
 			else
-				local chan = ("%s#id%s"):format(msg.to.type, msg.to.id)
+				local chan = ("%s!id%s"):format(msg.to.type, msg.to.id)
 			    channel_get_users(chan, members_channel, {chat_id=chat_id})
 			end
 		else
@@ -338,7 +338,7 @@ local function run(msg, matches)
 		 		local receiver = 'chat#id'..msg.to.id
 			    chat_info(receiver, mods_chat, {chat_id=chat_id})
 			else
-				local chan = ("%s#id%s"):format(msg.to.type, msg.to.id)
+				local chan = ("%s!id%s"):format(msg.to.type, msg.to.id)
 			    channel_get_users(chan, mods_channel, {chat_id=chat_id})
 			end
 		else
@@ -351,11 +351,11 @@ end
 
 return {
   patterns = {
-  	"^!(rank) (.*) (.*)$",
-  	"^!(rank) (.*)$",
-  	"^!(admins)$",
-  	"^!(mods)$",
-  	"^!(members)$"
+  	"^[!/#](rank) (.*) (.*)$",
+  	"^[!/#](rank) (.*)$",
+  	"^[!/#](admins)$",
+  	"^[!/#](mods)$",
+  	"^[!/#](members)$"
   },
   run = run
 }

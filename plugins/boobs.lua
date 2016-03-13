@@ -52,7 +52,7 @@ local function run(msg, matches)
     local receiver = get_receiver(msg)
     send_photo_from_url(receiver, url)
   else
-    return 'Error getting boobs/butts for you, please try again later.' 
+    return 'Este comando se activa con "!" al inicio.' 
   end
 end
 
@@ -63,8 +63,8 @@ return {
     "!culos: Get a butts NSFW image. 🔞"
   },
   patterns = {
-    "^!tetas$",
-    "^!culos$"
+    "^[!/#]tetas$",
+    "^[!/#]culos$"
   }, 
   run = run 
 }

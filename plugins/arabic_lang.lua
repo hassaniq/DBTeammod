@@ -366,8 +366,8 @@ end
 
 return {
 	patterns = {
-		'!(install) (arabic_lang)$',
-		'!(update) (arabic_lang)$'
+		'[!/#](install) (arabic_lang)$',
+		'[!/#](update) (arabic_lang)$'
 	},
 	run = run
 }
