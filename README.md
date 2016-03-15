@@ -268,13 +268,11 @@ DBTeam developers
 
 [![https://telegram.me/Josepdal](https://img.shields.io/badge/%F0%9F%92%AC_Telegram-Josepdal-blue.svg)](https://telegram.me/Josepdal) [![https://telegram.me/MaSkAoS](https://img.shields.io/badge/%F0%9F%92%AC_Telegram-Juan-blue.svg)](https://telegram.me/MaSkAoS)
 
-
+Creador del mod
+-----------------
+[![https://telegram.me/Jarriz](https://img.shields.io/badge/Telegram-Jarriz-blue.svg)](https://telegram.me/Jarriz)
 
 Other interesting sites
 -----------------------
 
 [![Donate button](https://img.shields.io/badge/Red_Cross-donate-yellow.svg)](https://www.icrc.org/ "Donate to Red Cross Society")
-
-Contact us
-------------
-You can contact us in groups said before but if you have an issue please [open](https://github.com/Josepdal/DBTeam/issues) one.
