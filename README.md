@@ -1,4 +1,5 @@
-DBTeam-bot
+
+[!(http://i628.photobucket.com/albums/uu8/gzbeozeta/cooltext171554858793662_zpsijicdkwp.png)](https://telegram.me/Jarriz)
 ============
 NOTA: ESTE ES SOLO UNA CONFIGURACION/MOD CON MAS PLUGINS YA INSTALADOS, EL CREADOR ES JOSEPDAL.
 
