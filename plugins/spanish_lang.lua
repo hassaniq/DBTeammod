@@ -29,7 +29,7 @@ local function run(msg, matches)
 		-------------
 
 		-- global plugins --
-		set_text(LANG, 'require_sudo', 'Este plugin requiere permisos de administrador en el bot.')
+		set_text(LANG, 'require_sudo', 'Este plugin requiere privilegios sudo')
 		set_text(LANG, 'require_admin', 'Este plugin requiere privilegios admin o superior')
 		set_text(LANG, 'require_mod', 'Este plugin requiere privilegios mod o superior')
 		
@@ -45,8 +45,8 @@ local function run(msg, matches)
 		set_text(LANG, 'notAllowedSpamL', 'Spam no permitido en este supergrupo')
 
 		-- bot.lua --
-		set_text(LANG, 'botOn', 'Bot encendido. Elaborado por Jarriz')
-		set_text(LANG, 'botOff', 'Bot apagado. Elaborado por Jarriz :D')
+		set_text(LANG, 'botOn', 'Estoy listo, allá vamos!')
+		set_text(LANG, 'botOff', 'No pinto nada aquí')
 
 		-- settings.lua --
 		set_text(LANG, 'user', 'El usuario')
@@ -66,6 +66,11 @@ local function run(msg, matches)
 		set_text(LANG, 'photosL', 'Fotos permitidas en este supergrupo.')
 		set_text(LANG, 'noPhotosT', 'Fotos no permitidas en este grupo.')
 		set_text(LANG, 'noPhotosL', 'Fotos no permitidas en este supergrupo.')
+
+		set_text(LANG, 'botsT', 'Bots permitidos en este groupo.')
+		set_text(LANG, 'botsL', 'Bots permitidos en este supergroupo.')
+		set_text(LANG, 'noBotsT', 'Bots no permitidos en este groupo.')
+		set_text(LANG, 'noBotsL', 'Bots no permitidos en este supergroupo.')
 
 		set_text(LANG, 'arabicT', 'El árabe está permitido en este grupo.')
 		set_text(LANG, 'arabicL', 'El árabe está permitido en este supergrupo.')
@@ -118,11 +123,11 @@ local function run(msg, matches)
 		set_text(LANG, 'setPhotoAborted', 'Parando el proceso de establecer foto...')
 		set_text(LANG, 'sendPhoto', 'Envía una foto por favor')
 
-		set_text(LANG, 'chatSetphoto', 'Ahora puedes usar setphoto en este chat.')
-		set_text(LANG, 'channelSetphoto', 'Ahora puedes usar setphoto en este canal.')
-		set_text(LANG, 'notChatSetphoto', 'Ahora no puedes usar setphoto en este chat.')
-		set_text(LANG, 'notChannelSetphoto', 'Ahora no puedes usar setphoto en canal.')
-		set_text(LANG, 'setPhotoError', 'Por favor, activa setphoto en los ajustes.')
+		set_text(LANG, 'chatSetphoto', 'Ahora podrás cambiar la foto en este grupo.')
+		set_text(LANG, 'channelSetphoto', 'Ahora podrás cambiar la foto en este supergrupo.')
+		set_text(LANG, 'notChatSetphoto', 'Ahora no podrás cambiar la foto en este grupo')
+		set_text(LANG, 'notChannelSetphoto', 'Ahora no podrás cambiar la foto en este supergrupo.')
+		set_text(LANG, 'setPhotoError', 'Por favor activa Establecer Foto en los ajustes.')
 
 		set_text(LANG, 'linkSaved', 'El enlace ha sido guardado')
 		set_text(LANG, 'groupLink', 'Link del grupo')
@@ -152,9 +157,9 @@ local function run(msg, matches)
 		set_text(LANG, 'muteAllX:1', 'Este grupo ha sido silenciado durante')
 		set_text(LANG, 'muteAllX:2', 'segundos.')
 
-		set_text(LANG, 'createGroup:1', 'Grupo')
-		set_text(LANG, 'createGroup:2', 'creado.')
-		set_text(LANG, 'newGroupWelcome', '¡Bienvenido a tu nuevo grupo!')
+		set_text(LANG, 'createGroup:1', 'Group')
+		set_text(LANG, 'createGroup:2', 'created.')
+		set_text(LANG, 'newGroupWelcome', 'Welcome to your new group.')
 
 		-- export_gban.lua --
 		set_text(LANG, 'accountsGban', 'cuentas globalmente baneadas.')
@@ -239,8 +244,8 @@ local function run(msg, matches)
 		set_text(LANG, 'errorNoPlug', 'Este plugin no existe o no tiene comandos.')
 
 		-- rules.lua --
-		set_text(LANG, 'setRules', '¡Reglas del chat actualizadas!.')
-		set_text(LANG, 'remRules', 'Reglas del chat eliminadas.')
+		set_text(LANG, 'setRules', 'Chat rules have been updated.')
+		set_text(LANG, 'remRules', 'Chat rules have been removed.')
 		
         ------------
 		-- Usages --
@@ -343,14 +348,14 @@ local function run(msg, matches)
 		-- version.lua --
 		set_text(LANG, 'rules:0', 1)
 		set_text(LANG, 'rules:1', '!rules: muestra las reglas del chat.')
-
+		
 		if matches[1] == 'install' then
 			return 'ℹ️ El lenguaje español ha sido instalado en su base de datos.'
 		elseif matches[1] == 'update' then
 			return 'ℹ️ El lenguaje español ha sido actualizado en su base de datos.'
 		end
 	else
-		return "Este plugin requiere permisos de administrador en el bot."
+		return "Este plugin requiere permisos de sudo."
 	end
 end
 

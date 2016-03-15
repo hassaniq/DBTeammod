@@ -59,9 +59,7 @@ local function pre_process(msg)
     else
         floodTime = tonumber(redis:get(hash))
     end
-    print('preprueba')
     if not permissions(msg.from.id, msg.to.id, "pre_process") then
-        print('prueba')
         --Checking flood
         local hashse = 'anti-flood:'..msg.to.id
         if not redis:get(hashse) then
@@ -89,6 +87,22 @@ local function pre_process(msg)
                     end
                     redis:setex(hash, floodTime, msgs+1)
                 end
+            end
+        end
+
+        if msg.action and msg.action.type then
+            local action = msg.action.type
+            if action == 'chat_add_user' or action == 'chat_add_user_link' then
+            	hash = 'antibot:'..msg.to.id
+            	if redis:get(hash) then
+	                if string.sub(msg.from.username, (string.len(msg.from.username)-2), string.len(msg.from.username)) == 'bot' then
+	                    if msg.to.type == 'chat' then
+	                        chat_del_user('chat#id'..msg.to.id, 'user#id'..msg.from.id, ok_cb, true)
+	                    elseif msg.to.type == 'channel' then
+	                        channel_kick_user('channel#id'..msg.to.id, 'user#id'..msg.from.id, ok_cb, true)
+	                    end
+	                end
+	            end
             end
         end
 
@@ -224,6 +238,25 @@ local function run(msg, matches)
                             send_msg('chat#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'noPhotosT'), ok_cb, false)
                         elseif msg.to.type == 'channel' then
                             send_msg('channel#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'noPhotosL'), ok_cb, false)
+                        end
+                    end
+                    return
+                elseif matches[2] == 'bots' then
+                    if matches[3] == 'enable' then
+                        hash = 'antibot:'..msg.to.id
+                        redis:del(hash)
+                        if msg.to.type == 'chat' then
+                            send_msg('chat#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'botsT'), ok_cb, false)
+                        elseif msg.to.type == 'channel' then
+                            send_msg('channel#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'botsL'), ok_cb, false)
+                        end
+                    elseif matches[3] == 'disable' then
+                        hash = 'antibot:'..msg.to.id
+                        redis:set(hash, true)
+                        if msg.to.type == 'chat' then
+                            send_msg('chat#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'noBotsT'), ok_cb, false)
+                        elseif msg.to.type == 'channel' then
+                            send_msg('channel#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'noBotsL'), ok_cb, false)
                         end
                     end
                     return
@@ -384,7 +417,7 @@ local function run(msg, matches)
                     elseif matches[2] == 'setphoto' then
                     if matches[3] == 'enable' then
                         local hash = 'setphoto:'..msg.to.id
-                        redis:set(hash, true)
+                        redis:del(hash)
                         if msg.to.type == 'chat' then
                             send_msg('chat#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'chatSetphoto'), ok_cb, false)
                         elseif msg.to.type == 'channel' then
@@ -392,7 +425,7 @@ local function run(msg, matches)
                         end
                     elseif matches[3] == 'disable' then
                         local hash = 'setphoto:'..msg.to.id
-                        redis:del(hash)
+                        redis:set(hash, true)
                         if msg.to.type == 'chat' then
                             send_msg('chat#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'notChatSetphoto'), ok_cb, false)
                         elseif msg.to.type == 'channel' then
@@ -445,7 +478,7 @@ local function run(msg, matches)
 
                 --Enable/disable bots
                 local hash = 'antibot:'..msg.to.id
-                if redis:get(hash) then
+                if not redis:get(hash) then
                     sBots = allowed
                     sBotsD = '🔸'
                 else
@@ -510,8 +543,8 @@ local function run(msg, matches)
                 text = text..sSpamD..' '..lang_text(msg.to.id, 'spam')..': '..sSpam..'\n'
 
                 --Enable/disable setphoto
-                local hash = 'setphoto:'..msg.to.id..':'..msg.from.id
-                if redis:get(hash) then
+                local hash = 'setphoto:'..msg.to.id
+                if not redis:get(hash) then
                     sSPhoto = allowed
                     sSPhotoD = '🔸'
                 else
@@ -593,8 +626,8 @@ local function run(msg, matches)
     elseif matches[1] == 'rem' then
         if permissions(msg.from.id, msg.to.id, "settings") then
             if msg.reply_id then
-                get_message(msg.reply_id, remove_message, true)
-                get_message(msg.id, remove_message, true)
+                get_message(msg.reply_id, remove_message, false)
+                get_message(msg.id, remove_message, false)
             end
             return
         else
@@ -634,6 +667,34 @@ local function run(msg, matches)
             return
         else
             return '🚫 '..lang_text(msg.to.id, 'require_admin')
+        end
+    elseif matches[1] == 'newlink' then
+        if permissions(msg.from.id, msg.to.id, "setlink") then
+        	local receiver = get_receiver(msg)
+            local hash = 'link:'..msg.to.id
+    		local function cb(extra, success, result)
+    			if result then
+    				redis:set(hash, result)
+    			end
+	            if success == 0 then
+	                return send_large_msg(receiver, 'I can\'t create a newlink.', ok_cb, true)
+	            end
+    		end
+    		if msg.to.type == 'chat' then
+                result = export_chat_link(receiver, cb, true)
+            elseif msg.to.type == 'channel' then
+                result = export_channel_link(receiver, cb, true)
+            end
+    		if result then
+	            if msg.to.type == 'chat' then
+	                send_msg('chat#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'linkSaved'), ok_cb, true)
+	            elseif msg.to.type == 'channel' then
+	                send_msg('channel#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'linkSaved'), ok_cb, true)
+	            end
+	        end
+            return
+        else
+            return '?? '..lang_text(msg.to.id, 'require_admin')
         end
     elseif matches[1] == 'link' then
         if permissions(msg.from.id, msg.to.id, "link") then

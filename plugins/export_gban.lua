@@ -33,7 +33,6 @@ local text = text..[[
         return '🚫 '..lang_text(msg.to.id, 'require_sudo')
     end
 end
-
     return {
         description = 'Add gbans into your bot. A gbanlist command.',
         usage = {},

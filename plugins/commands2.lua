@@ -12,6 +12,7 @@ return {
     "^más comandos$",
     "^mas comandos$",
     "^Mas comandos$",
+    "^[!/#]commands2$"
   }, 
   run = run 
 }
