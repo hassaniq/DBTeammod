@@ -281,7 +281,7 @@ Yagop developer and bot development group
 Other interesting sites
 -----------------------
 
-[![Donate button](https://img.shields.io/badge/Red_Cross-donate-yellow.svg)](https://www.icrc.org/ "Donate to Red Cross Society") [![http://taligram.org](https://img.shields.io/badge/Taligram.org-Visit_us-blue.svg)](http://taligram.org)
+[![Donate button](https://img.shields.io/badge/Red_Cross-donate-yellow.svg)](https://www.icrc.org/ "Donate to Red Cross Society")
 
 Contact us
 ------------
