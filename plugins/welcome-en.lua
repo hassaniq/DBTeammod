@@ -47,5 +47,5 @@ return {
 	   "^!!tgservice (chat_del_user)$",
       "^!!tgservice (chat_add_user_link)$"
    },
-   run = ru
+   run = run
 }
