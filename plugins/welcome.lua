@@ -1,5 +1,3 @@
---by @xxdamage
-
 function chat_new_user(msg)
    local name = msg.action.user.first_name:gsub('_', ' ')
    if msg.action.user.username then
