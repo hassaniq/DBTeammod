@@ -5,12 +5,20 @@ NOTA: ESTE ES SOLO UNA CONFIGURACION/MOD CON MAS PLUGINS YA INSTALADOS, EL CREAD
 NOTE: THIS IS ONLY A CONFUGURATION/MOD WITH MORE PLUGINS INSTALLED, THE CREATOR IS JOSEPDAL.
 
 ------------
-El mod incluye:
+Incluye:
 - Comandos de activación con ! / ó #.
 - Nuevos plugins.
-- Idioma al español completamente en ingles
+- Idioma al español completo.
 - Algunos plugins ya instalados de Yagop.
 - Plugin de welcome en español e ingles.
+
+
+Includes:
+- Commands of activation with ! / or #.
+- New plugins.
+- Utils.lua in spanish.
+- Some plugins installed of Yagop.
+- Welcome plugin in spanish and english.
 
 Bot commands
 ------------
