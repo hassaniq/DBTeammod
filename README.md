@@ -266,9 +266,9 @@ $ sudo stop telegram # To stop it
 DBTeam developers
 -----------------
 
-[![https://telegram.me/Josepdal](https://img.shields.io/badge/%F0%9F%92%AC_Telegram-Josepdal-blue.svg)](https://telegram.me/Josepdal) [![https://telegram.me/MaSkAoS](https://img.shields.io/badge/%F0%9F%92%AC_Telegram-Juan-blue.svg)](https://telegram.me/MaSkAoS)
+[![https://telegram.me/Josepdal](https://img.shields.io/badge/Telegram-Josepdal-blue.svg)](https://telegram.me/Josepdal) [![https://telegram.me/MaSkAoS](https://img.shields.io/badge/Telegram-Juan-blue.svg)](https://telegram.me/MaSkAoS)
 
-Creador del mod
+Mod developer
 -----------------
 [![https://telegram.me/Jarriz](https://img.shields.io/badge/Telegram-Jarriz-blue.svg)](https://telegram.me/Jarriz)
 
