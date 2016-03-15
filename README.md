@@ -6,13 +6,7 @@ NOTE: THIS IS ONLY A CONFUGURATION/MOD WITH MORE PLUGINS INSTALLED, THE CREATOR 
 
 ------------
 
-El mod incluye:
-- Comandos de activación con ! / ó #.
-- Nuevos plugins.
-- Idioma al español completamente en ingles
-- Algunos plugins ya instalados de Yagop.
-- Plugin de welcome en español e ingles.
-Bot Commands
+Bot commands
 ------------
 <table>
     <thead>
