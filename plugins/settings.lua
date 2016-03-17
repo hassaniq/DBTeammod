@@ -12,7 +12,7 @@
 --    #creategroup by @lamjavid &  @Josepdal	--
 --												--
 --------------------------------------------------
-
+-- fix links @Jarriz
 do
 
 local function create_group(msg, group_name)
@@ -219,6 +219,25 @@ local function run(msg, matches)
                             send_msg('chat#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'noGifsT'), ok_cb, false)
                         elseif msg.to.type == 'channel' then
                             send_msg('channel#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'noGifsL'), ok_cb, false)
+                        end
+                end
+                return
+                elseif matches[2] == 'links' then
+                    if matches[3] == 'enable' then
+                        hash = 'links:'..msg.to.id
+                        redis:del(hash)
+                        if msg.to.type == 'chat' then
+                            send_msg('chat#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'LinksT'), ok_cb, false)
+                        elseif msg.to.type == 'channel' then
+                            send_msg('channel#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'LinksL'), ok_cb, false)
+                        end
+                    elseif matches[3] == 'disable' then
+                        hash = 'links:'..msg.to.id
+                        redis:set(hash, true)
+                        if msg.to.type == 'chat' then
+                            send_msg('chat#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'noLinksT'), ok_cb, false)
+                        elseif msg.to.type == 'channel' then
+                            send_msg('channel#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'noLinksL'), ok_cb, false)
                         end
                     end
                     return
@@ -455,7 +474,7 @@ local function run(msg, matches)
                 text = text..sStickersD..' '..lang_text(msg.to.id, 'stickers')..': '..sStickers..'\n'
 
                 --Enable/disable Links
-                local hash = 'antilink:'..msg.to.id
+                local hash = 'links:'..msg.to.id
                 if redis:get(hash) then
                     sLink = noAllowed
                     sLinkD = '🔹'
