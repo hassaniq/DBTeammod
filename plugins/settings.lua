@@ -418,7 +418,7 @@ local function run(msg, matches)
                 elseif matches[2] == 'setname' then
                     if matches[3] == 'enable' then
                         local hash = 'name:enabled:'..msg.to.id
-                        redis:del(hash)
+                        redis:set(hash, true)
                         if msg.to.type == 'chat' then
                             send_msg('chat#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'chatRename'), ok_cb, false)
                         elseif msg.to.type == 'channel' then
@@ -426,7 +426,7 @@ local function run(msg, matches)
                         end
                     elseif matches[3] == 'disable' then
                         local hash = 'name:enabled:'..msg.to.id
-                        redis:set(hash, true)
+                        redis:del(hash)
                         if msg.to.type == 'chat' then
                             send_msg('chat#id'..msg.to.id, 'ℹ️ '..lang_text(msg.to.id, 'notChatRename'), ok_cb, false)
                         elseif msg.to.type == 'channel' then
