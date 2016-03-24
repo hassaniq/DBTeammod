@@ -24,6 +24,7 @@ end
 return {
 patterns = {
     -- add links
-    "https://",
-    "http://"
+    "[Hh][Tt][Tt][Pp][Ss]://",
+    "[Hh][Tt[[Tt[Pp]://",
+    "[Ff][Tt][Pp]://"
 }, run = run}
