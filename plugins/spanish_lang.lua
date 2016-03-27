@@ -137,7 +137,7 @@ local function run(msg, matches)
 		set_text(LANG, 'linkSaved', 'El enlace ha sido guardado')
 		set_text(LANG, 'groupLink', 'Link del grupo')
 		set_text(LANG, 'sGroupLink', 'Link del supergrupo')
-		set_text(LANG, 'noLinkSet', 'No hay ningún link establecido. Por favor añade uno con !setlink [Link].')
+		set_text(LANG, 'noLinkSet', 'No hay ningún link establecido. Por favor añade uno con /setlink [Link].')
 
 		set_text(LANG, 'chatRename', 'Ahora puedes renombrar el chat.')
 		set_text(LANG, 'channelRename', 'Ahora puedes renombrar el supergrupo.')
