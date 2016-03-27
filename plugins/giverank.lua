@@ -207,34 +207,34 @@ end
 
 local function mods_channel(extra, success, result)
 	local chat_id = extra.chat_id
-	local text = '🔆 '..lang_text(chat_id, 'modList')..':\n'
+	local text = '👮 '..lang_text(chat_id, 'modList')..':\n'
 	local compare = text
 	for k,user in ipairs(result) do
 		hash = 'mod:'..chat_id..':'..user.peer_id
 		if redis:get(hash) then
-			text = text..'🔅 '..user.username..'\n'
+			text = text..'➖ '..user.username..'\n'
 		end
 	end
 	if text == compare then
-		text = text..'🔅 '..lang_text(chat_id, 'modEmpty')
+		text = text..'➖ '..lang_text(chat_id, 'modEmpty')
 	end
 	return send_large_msg('channel#id'..chat_id, text, ok_cb, true)
 end
 
 local function mods_chat(extra, success, result)
 	local chat_id = extra.chat_id
-	local text = '🔆 '..lang_text(chat_id, 'modList')..':\n'
+	local text = '👑 '..lang_text(chat_id, 'modList')..':\n'
 	local compare = text
 	for k,user in ipairs(result.members) do
 		if user.username then
 			hash = 'mod:'..chat_id..':'..user.peer_id
 			if redis:get(hash) then
-				text = text..'🔅 '..user.username..'\n'
+				text = text..'➖ '..user.username..'\n'
 			end
 		end
 	end
 	if text == compare then
-		text = text..'🔅 '..lang_text(chat_id, 'modEmpty')
+		text = text..'➖ '..lang_text(chat_id, 'modEmpty')
 	end
 	return send_large_msg('chat#id'..chat_id, text, ok_cb, true)
 end
@@ -306,13 +306,13 @@ local function run(msg, matches)
 	elseif matches[1] == 'admins' then
 		if permissions(user_id, chat_id, "admins") then
 		  	-- Check users id in config
-		  	local text = '🔆 '..lang_text(msg.to.id, 'adminList')..':\n'
+		  	local text = '👑 '..lang_text(msg.to.id, 'adminList')..':\n'
 		  	local compare = text
 		  	for v,user in pairs(_config.admin_users) do
-			    text = text..'🔅 '..user[2]..' ('..user[1]..')\n'
+			    text = text..'➖ '..user[2]..' ('..user[1]..')\n'
 		  	end
 		  	if compare == text then
-		  		text = text..'🔅 '..lang_text(chat_id, 'adminEmpty')
+		  		text = text..'➖ '..lang_text(chat_id, 'adminEmpty')
 		  	end
 		  	return text
 		else
@@ -325,7 +325,7 @@ local function run(msg, matches)
 		 		local receiver = 'chat#id'..msg.to.id
 			    chat_info(receiver, members_chat, {chat_id=chat_id})
 			else
-				local chan = ("%s!id%s"):format(msg.to.type, msg.to.id)
+				local chan = ("%s#id%s"):format(msg.to.type, msg.to.id)
 			    channel_get_users(chan, members_channel, {chat_id=chat_id})
 			end
 		else
@@ -338,7 +338,7 @@ local function run(msg, matches)
 		 		local receiver = 'chat#id'..msg.to.id
 			    chat_info(receiver, mods_chat, {chat_id=chat_id})
 			else
-				local chan = ("%s!id%s"):format(msg.to.type, msg.to.id)
+				local chan = ("%s#id%s"):format(msg.to.type, msg.to.id)
 			    channel_get_users(chan, mods_channel, {chat_id=chat_id})
 			end
 		else
@@ -351,11 +351,11 @@ end
 
 return {
   patterns = {
-  	"^[!/#](rank) (.*) (.*)$",
-  	"^[!/#](rank) (.*)$",
-  	"^[!/#](admins)$",
-  	"^[!/#](mods)$",
-  	"^[!/#](members)$"
+  	"[!/#](rank) (.*) (.*)$",
+  	"[!/#](rank) (.*)$",
+  	"[!/#](admins)$",
+  	"[!/#](mods)$",
+  	"[!/#](members)$"
   },
   run = run
 }
