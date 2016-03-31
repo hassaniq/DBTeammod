@@ -124,7 +124,8 @@ end
 return {
   description = "Muestra la hora local en un sitio",
   usage = "!hora [area]: muestra la hora local en un sitio",
-  patterns = {"[#/!](hora) (.*)$",
+  patterns = {
+    "[#/!](hora) (.*)$",
     "[#/!](time) (.*)$"
   },
   run = run
