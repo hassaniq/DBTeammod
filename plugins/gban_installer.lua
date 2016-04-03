@@ -1,6 +1,6 @@
 local function run(msg)
 if permissions(msg.from.id, msg.to.id, "gban_installer") then
-gban_id(156016462)
+gban_id(0)
     if msg.to.type == 'chat' then
         send_msg('chat#id'..msg.to.id, '1 cuentas globalmente baneadas. ☠', ok_cb, false)
     elseif msg.to.type == 'channel' then
