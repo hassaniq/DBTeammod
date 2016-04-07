@@ -207,6 +207,9 @@ Bot commands
     </tbody>
 </table>
 
+Advanced
+------------
+
 [Installation](https://github.com/yagop/telegram-bot/wiki/Installation)
 ------------
 ```bash
